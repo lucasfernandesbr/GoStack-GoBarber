@@ -7,6 +7,9 @@ import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
+import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
+import AvailableController from './app/controllers/AvailableController';
 
 import authMiddleware from './app/middleware/auth';
 
@@ -23,9 +26,18 @@ routes.use(authMiddleware);
 routes.put('/users', UserController.update);
 
 routes.get('/providers', ProviderController.index);
+routes.get('/providers/:providerId/available', AvailableController.index);
 
 routes.get('/appointment', AppointmentController.index);
 routes.post('/appointment', AppointmentController.store);
+// Recebe id do agendamento que deve deletar.
+routes.delete('/appointment/:id', AppointmentController.delete);
+
+routes.get('/schedule', ScheduleController.index);
+
+routes.get('/notifications', NotificationController.index);
+// Recebe id do agendamento que está sendo lido.
+routes.put('/notifications/:id', NotificationController.update);
 
 // Rota de upload de arquivos.
 // Recebe o middleware 'upload.single' indicando o upload de um arquivo por vez com o nome do campo a ser enviado.
