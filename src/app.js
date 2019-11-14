@@ -1,5 +1,6 @@
 //  CONFIGURAÇÕES DO SERVIDOR
 import express from 'express';
+import cors from 'cors';
 import path from 'path';
 import Youch from 'youch';
 import * as Sentry from '@sentry/node';
@@ -24,6 +25,7 @@ class App {
 
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler());
+    this.server.use(cors());
     this.server.use(express.json());
 
     // 'express.static()' é um recurso que server para servir arquivos estáticos(img, css, html), arquivos que podem ser acessados via navegador.

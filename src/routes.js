@@ -28,7 +28,7 @@ routes.put('/users', UserController.update);
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);
 
-routes.get('/appointment', AppointmentController.index);
+routes.get('/appointments', AppointmentController.index);
 routes.post('/appointment', AppointmentController.store);
 // Recebe id do agendamento que deve deletar.
 routes.delete('/appointment/:id', AppointmentController.delete);
